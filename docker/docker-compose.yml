@@ -1,0 +1,13 @@
+postgres:
+  image: postgres:9.4
+  environment:
+    - POSTGRES_PASSWORD=password
+
+pgadmin:
+  image: thajeztah/pgadmin4
+  volumes:
+    - "./pgadmin:/pgadmin"
+  ports:
+    - "5050:5050"
+  links:
+    - postgres
