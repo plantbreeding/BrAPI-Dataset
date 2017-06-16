@@ -16,8 +16,8 @@ wait_for_pg
 
 # Restoring the database on container start
 log "Restoring database schema..."
-#PGPASSWORD=password pg_dump -h postgres -U postgres postgres -v -c -s -f /brapi-dataset/import-schema.sql
-$PSQL postgres -f /brapi-dataset/import-schema.sql
+#PGPASSWORD=password pg_dump -h postgres -U postgres postgres -v -c -s -f /brapi-dataset/schema.sql
+$PSQL postgres -f /brapi-dataset/schema.sql
 
 log "Restoring database data..."
 $PSQL postgres -f /brapi-dataset/import-data.sql

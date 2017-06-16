@@ -193,7 +193,7 @@ CREATE TABLE method (
 );
 
 -- TODO: add detailed fields
-CREATE TABLE scaleDbId (
+CREATE TABLE scale (
   cropDbId text REFERENCES crop(cropDbId),
   scaleDbId text NOT NULL PRIMARY KEY
 );

@@ -1,3 +1,6 @@
+Work in progress schema (exported with DbVis from `schema.sql`):
+![BrAPI V1 schema](diagram.svg)
+
 Disclaimer:
 The data examples are not real and not really coherent.
 
