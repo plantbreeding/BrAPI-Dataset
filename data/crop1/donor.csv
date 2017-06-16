@@ -1,3 +1,3 @@
-cropDbId;germplasmDbId;donorAccessionNumber;donorInstituteCode;donorGermplasmPUI
-1;1;A001230;INRA;https://doi.org/10.1109/5.771073
-1;1;A001310;INRA;https://doi.org/10.1109/5.231123
+cropDbId,germplasmDbId,donorAccessionNumber,donorInstituteCode,donorGermplasmPUI
+1,1,A001230,INRA,https://doi.org/10.1109/5.771073
+1,1,A001310,INRA,https://doi.org/10.1109/5.231123

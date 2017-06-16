@@ -1,5 +1,5 @@
-cropDbId;contactDbId;name;email;type;orcid
-1;1;A. Breeder;a.breeder@brapi.org;Breeder;0000-0002-0607-8728
-1;2;B. Breeder;b.breeder@brapi.org;Breeder;0000-0002-0607-8729
-1;3;A. Technician;a.technician@brapi.org;Technician;0000-0002-0607-8731
-1;4;B. Technician;b.technician@brapi.org;Technician;0000-0002-0607-8732
+cropDbId,contactDbId,name,email,type,orcid
+1,1,A. Breeder,a.breeder@brapi.org,Breeder,0000-0002-0607-8728
+1,2,B. Breeder,b.breeder@brapi.org,Breeder,0000-0002-0607-8729
+1,3,A. Technician,a.technician@brapi.org,Technician,0000-0002-0607-8731
+1,4,B. Technician,b.technician@brapi.org,Technician,0000-0002-0607-8732
