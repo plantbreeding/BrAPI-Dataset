@@ -27,7 +27,7 @@ Access pgAdmin on http://localhost:5050 or http://$(docker-machine ip main):5050
 
 ```
 ./docker/shell.sh postgres # Enters the postgres container's shell
-./docker/shell.sh pgadmin # Enters the pgadmin container's shell
+./docker/shell.sh pgadmin  # Enters the pgadmin container's shell
 ```
 
 ## Delete the containers & images

@@ -1,12 +1,18 @@
+# https://hub.docker.com/_/postgres/
 postgres:
   image: postgres:9.4
+  volumes:
+    - "../data:/data"
+  ports:
+    - "5432:5432"
   environment:
     - POSTGRES_PASSWORD=password
 
 pgadmin:
-  image: thajeztah/pgadmin4
+  build: ./pgadmin
   volumes:
     - "./pgadmin:/pgadmin"
+    - "../:/brapi-dataset"
   ports:
     - "5050:5050"
   links:

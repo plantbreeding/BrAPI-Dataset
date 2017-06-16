@@ -1,0 +1,2 @@
+cropDbId;programDbId;trialDbId;name;startDate;endDate;active
+1;1;1;Trial 1;1/1/2013;7/5/2013;TRUE
