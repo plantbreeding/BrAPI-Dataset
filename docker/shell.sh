@@ -12,14 +12,7 @@ Usage: $me <service name>
 EOF
 }
 
-CONTAINER_NAME="${PROJECT_NAME}_${SERVICE_NAME}"
-
-# Search
-CONTAINER_ID=$(docker ps | grep $CONTAINER_NAME | cut -f1 -d$' ')
-[ -z "$CONTAINER_ID" ] && fail "No container $CONTAINER_NAME running. Exiting."
-
-
 # Launch bash
-( eval_verbose docker exec -it $CONTAINER_ID bash ) ||
+( $DIR/exec.sh $SERVICE_NAME bash ) ||
 # Fallback on classic shell
-( echo "Fallback to classic shell..."; eval_verbose docker exec -it $CONTAINER_ID sh )
+( echo "Fallback to classic shell..."; $DIR/exec.sh $SERVICE_NAME sh )
