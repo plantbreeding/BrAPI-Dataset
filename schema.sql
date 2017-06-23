@@ -30,12 +30,13 @@ DROP TABLE IF EXISTS marker;
 DROP TABLE IF EXISTS markerprofile;
 
 -- Germplasm related
-DROP TABLE IF EXISTS taxon_germplasm;
-DROP TABLE IF EXISTS taxon;
+DROP TABLE IF EXISTS taxon_xref_germplasm;
+DROP TABLE IF EXISTS taxon_xref;
 DROP TABLE IF EXISTS pedigree;
 DROP TABLE IF EXISTS donor;
 DROP TABLE IF EXISTS germplasm_attribute_value;
 DROP TABLE IF EXISTS germplasm_attribute;
+DROP TABLE IF EXISTS germplasm_attribute_category;
 DROP TABLE IF EXISTS germplasm;
 DROP TABLE IF EXISTS crop;
 
@@ -66,27 +67,33 @@ CREATE TABLE germplasm (
   speciesAuthority text,
   subtaxa text,
   subtaxaAuthority text,
-  acquisitionDate text -- should be a date format
+  acquisitionDate text -- TODO: use a date format
+);
+
+CREATE TABLE germplasm_attribute_category (
+  cropDbId text REFERENCES crop(cropDbId),
+  attributeCategoryDbId text NOT NULL PRIMARY KEY,
+  attributeCategoryName text
 );
 
 CREATE TABLE germplasm_attribute (
   cropDbId text REFERENCES crop(cropDbId),
-  germplasmDbId text NOT NULL REFERENCES germplasm(germplasmDbId),
-  attributeCategoryDbId text NOT NULL PRIMARY KEY,
-  attributeCategoryName text,
+  attributeCategoryDbId text NOT NULL REFERENCES germplasm_attribute_category(attributeCategoryDbId),
+  attributeDbId text NOT NULL PRIMARY KEY,
   code text,
   uri text,
-  name text,
+  name text NOT NULL,
   description text,
-  datatype text
+  datatype text,
+  values text[] -- All possible values for this germplasm attribute
 );
 
--- could be a text[] field in germplasm_attribute table
 CREATE TABLE germplasm_attribute_value (
   cropDbId text REFERENCES crop(cropDbId),
-  attributeCategoryDbId text NOT NULL REFERENCES germplasm_attribute(attributeCategoryDbId),
-  attributeCategoryValueDbId text NOT NULL PRIMARY KEY,
-  value text
+  germplasmDbId text NOT NULL REFERENCES germplasm(germplasmDbId),
+  attributeDbId text NOT NULL REFERENCES germplasm_attribute(attributeDbId),
+  determinedDate text, -- TODO: use a date format
+  value text NOT NULL -- Actual value for a specific attribute on a specific germplasm
 );
 
 CREATE TABLE pedigree (
@@ -97,16 +104,17 @@ CREATE TABLE pedigree (
   parent2Id text NOT NULL REFERENCES germplasm(germplasmDbId)
 );
 
-CREATE TABLE taxon (
+CREATE TABLE taxon_xref (
   cropDbId text REFERENCES crop(cropDbId),
   taxonDbId text NOT NULL PRIMARY KEY,
   source text NOT NULL,
   rank text -- very optionnal
 );
 
-CREATE TABLE taxon_germplasm (
+-- taxonIds in germplasm search & list
+CREATE TABLE taxon_xref_germplasm (
   cropDbId text REFERENCES crop(cropDbId),
-  taxonDbId text REFERENCES taxon(taxonDbId),
+  taxonDbId text REFERENCES taxon_xref(taxonDbId),
   germplasmDbId text REFERENCES germplasm(germplasmDbId)
 );
 

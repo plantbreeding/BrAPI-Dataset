@@ -1,0 +1,5 @@
+cropDbId,attributeCategoryDbId,attributeCategoryName
+1,1,Morphological
+1,2,Agronomic
+1,3,Biotic stress
+1,4,Abiotic stress
