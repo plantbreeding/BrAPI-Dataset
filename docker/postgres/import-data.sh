@@ -14,9 +14,12 @@ COPY germplasm_attribute_value FROM '/brapi-dataset/data/crop1/germplasm_attribu
 COPY donor FROM '/brapi-dataset/data/crop1/donor.csv' DELIMITER ',' CSV HEADER;
 
 -- study related
-COPY contact FROM '/brapi-dataset/data/crop1/contact.csv' DELIMITER ',' CSV HEADER;
-COPY location FROM '/brapi-dataset/data/crop1/location.csv' DELIMITER ',' CSV HEADER;
 COPY program FROM '/brapi-dataset/data/crop1/program.csv' DELIMITER ',' CSV HEADER;
 COPY trial FROM '/brapi-dataset/data/crop1/trial.csv' DELIMITER ',' CSV HEADER;
+COPY contact FROM '/brapi-dataset/data/crop1/contact.csv' DELIMITER ',' CSV HEADER;
+COPY location FROM '/brapi-dataset/data/crop1/location.csv' DELIMITER ',' CSV HEADER;
+COPY study_type FROM '/brapi-dataset/data/crop1/study_type.csv' DELIMITER ',' CSV HEADER;
+COPY study FROM '/brapi-dataset/data/crop1/study.csv' DELIMITER ',' CSV HEADER;
+COPY study_additional_info FROM '/brapi-dataset/data/crop1/study_additional_info.csv' DELIMITER ',' CSV HEADER;
 
 EOF

@@ -13,12 +13,14 @@ DROP TABLE IF EXISTS observation_unit;
 DROP TABLE IF EXISTS sample;
 
 -- Study related
+DROP TABLE IF EXISTS study_additional_info;
 DROP TABLE IF EXISTS study_season;
 DROP TABLE IF EXISTS study_data_link;
 DROP TABLE IF EXISTS study_contact;
 DROP TABLE IF EXISTS study;
 DROP TABLE IF EXISTS study_type;
 DROP TABLE IF EXISTS contact;
+DROP TABLE IF EXISTS location_additional_info;
 DROP TABLE IF EXISTS location;
 DROP TABLE IF EXISTS trial;
 DROP TABLE IF EXISTS program;
@@ -139,6 +141,13 @@ CREATE TABLE location (
   altitude numeric
 );
 
+CREATE TABLE location_additional_info (
+  cropDbId text REFERENCES crop(cropDbId),
+  locationDbId text REFERENCES location(locationDbId),
+  key text NOT NULL,
+  value text NOT NULL
+);
+
 CREATE TABLE contact (
   cropDbId text REFERENCES crop(cropDbId),
   contactDbId text NOT NULL PRIMARY KEY,
@@ -214,6 +223,13 @@ CREATE TABLE study_season (
   cropDbId text REFERENCES crop(cropDbId),
   studyDbId text NOT NULL REFERENCES study(studyDbId),
   seasonDbId text NOT NULL REFERENCES season(seasonDbId)
+);
+
+CREATE TABLE study_additional_info (
+  cropDbId text REFERENCES crop(cropDbId),
+  studyDbId text REFERENCES study(studyDbId),
+  key text NOT NULL,
+  value text NOT NULL
 );
 
 CREATE TABLE observation_unit (

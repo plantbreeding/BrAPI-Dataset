@@ -1,2 +1,3 @@
 cropDbId,programDbId,trialDbId,name,startDate,endDate,active
 1,1,1,Trial 1,1/1/2013,7/5/2013,TRUE
+1,1,2,Trial 2,6/1/2014,1/15/2015,FALSE

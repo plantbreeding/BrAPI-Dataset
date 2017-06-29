@@ -1,0 +1,4 @@
+cropDbId,trialDbId,locationDbId,studyType,studyDbId,name,description,startDate,endDate,active,license,lastUpdateVersion,lastUpdateTimestamp
+1,1,1,Yield study,1001,Study 1,Field yield phenotyping study,1/1/2013,1/1/2014,TRUE,https://creativecommons.org/licenses/by/4.0,1.1,01/01/15
+1,1,1,Yield study,1002,Study 2,Field yield phenotyping study,1/1/2014,1/1/2015,TRUE,https://creativecommons.org/licenses/by/4.0,2.3,01/01/16
+1,2,2,Crossing Nursery,1003,Study 3,Nursery study description,1/1/2011,1/1/2012,FALSE,https://creativecommons.org/licenses/by/4.0,0.1,01/01/14
