@@ -1,3 +1,11 @@
+-- JSON output for BrAPI calls:
+
+-- - /brapi/v1/germplasm-search 
+--   https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmSearchPOST.md
+--   https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmSearchGET.md
+
+-- - /brapi/v1/germplasm/{id}
+--   https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmDetailsByGermplasmDbId.md
 
 SELECT json_build_object(
   'germplasmDbId', g.germplasmDbId,
@@ -22,8 +30,8 @@ SELECT json_build_object(
       'source', t.source,
       'rank', t.rank
     )
-    FROM taxon t
-    JOIN taxon_germplasm tg
+    FROM taxon_xref t
+    JOIN taxon_xref_germplasm tg
       ON tg.taxonDbId = t.taxonDbId
       AND tg.germplasmDbId = g.germplasmDbId
   ),

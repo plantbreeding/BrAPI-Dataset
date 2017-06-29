@@ -1,19 +1,12 @@
 # https://hub.docker.com/_/postgres/
 postgres:
-  image: postgres:9.4
+  image: postgres:9-alpine # Latest 9.x 
   volumes:
-    - "../data:/data"
+    - "../:/brapi-dataset"
   ports:
     - "5432:5432"
   environment:
     - POSTGRES_PASSWORD=password
-
-pgadmin:
-  build: ./pgadmin
-  volumes:
-    - "./pgadmin:/pgadmin"
-    - "../:/brapi-dataset"
-  ports:
-    - "5050:5050"
-  links:
-    - postgres
+    - POSTGRES_USER=postgres
+  command:
+    - /brapi-dataset/docker/postgres/container-init.sh
