@@ -6,11 +6,11 @@
 -- - /brapi/v1/programs-search
 --   https://github.com/plantbreeding/API/blob/master/Specification/Programs/ProgramSearch.md
 
-SELECT json_build_object(
+SELECT json_agg(json_build_object(
   'programDbId', p.programDbId,
   'name', p.name,
   'abbreviation', p.abbreviation,
   'objective', p.objective,
   'leadPerson', p.leadPerson
-)
+))
 FROM program p

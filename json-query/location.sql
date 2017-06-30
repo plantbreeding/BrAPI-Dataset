@@ -6,7 +6,7 @@
 -- - /brapi/v1/locations/{id}
 --   https://github.com/plantbreeding/API/blob/master/Specification/Locations/LocationDetails.md
 
-SELECT json_build_object(
+SELECT json_agg(json_build_object(
   'locationDbId', l.locationDbId,
   'name', l.name,
   'locationType', l.type,
@@ -37,5 +37,5 @@ SELECT json_build_object(
         GROUP BY key
     ) ai
   )
-)
+))
 FROM location l

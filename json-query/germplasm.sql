@@ -1,13 +1,13 @@
 -- JSON output for BrAPI calls:
 
--- - /brapi/v1/germplasm-search 
+-- - /brapi/v1/germplasm-search
 --   https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmSearchPOST.md
 --   https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmSearchGET.md
 
 -- - /brapi/v1/germplasm/{id}
 --   https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmDetailsByGermplasmDbId.md
 
-SELECT json_build_object(
+SELECT json_agg(json_build_object(
   'germplasmDbId', g.germplasmDbId,
   'germplasmPUI', g.germplasmPUI,
   'germplasmName', g.germplasmName,
@@ -48,6 +48,6 @@ SELECT json_build_object(
     WHERE d.germplasmDbId = g.germplasmDbId
   ),
   'acquisitionDate', g.acquisitionDate
-)
+))
 FROM germplasm g
 JOIN crop c ON c.cropDbId = g.cropDbId;

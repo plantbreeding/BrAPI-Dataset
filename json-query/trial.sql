@@ -3,7 +3,7 @@
 -- - /brapi/v1/trials
 --   https://github.com/plantbreeding/API/blob/master/Specification/Trials/ListTrialSummaries.md
 
-SELECT json_build_object(
+SELECT json_agg(json_build_object(
   'trialDbId', t.trialDbId,
   'trialName', t.name,
   'startDate', t.startDate,
@@ -40,7 +40,7 @@ SELECT json_build_object(
         GROUP BY key
     ) ai
   )
-)
+))
 FROM trial t
 LEFT JOIN program p
   ON p.programDbId = t.programDbId

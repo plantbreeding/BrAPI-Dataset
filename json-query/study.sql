@@ -6,7 +6,7 @@
 -- - /brapi/v1/studies-search
 --   https://github.com/plantbreeding/API/blob/master/Specification/Studies/SearchStudies.md
 
-SELECT json_build_object(
+SELECT json_agg(json_build_object(
   'studyDbId', s.studyDbId,
   'name', s.name,
   'studyType', s.studyType,
@@ -46,7 +46,7 @@ SELECT json_build_object(
         GROUP BY key
     ) ai
   )
-)
+))
 FROM study s
 LEFT JOIN trial t
   ON t.trialDbId = s.trialDbId
