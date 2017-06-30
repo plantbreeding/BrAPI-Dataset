@@ -138,7 +138,9 @@ CREATE TABLE location (
   countryName text,
   latitude numeric,
   longitude numeric,
-  altitude numeric
+  altitude numeric,
+  instituteName text,
+  instituteAddress text
 );
 
 CREATE TABLE location_additional_info (
@@ -154,7 +156,8 @@ CREATE TABLE contact (
   name text,
   email text,
   type text,
-  orcid text
+  orcid text,
+  instituteName text
 );
 
 CREATE TABLE program (

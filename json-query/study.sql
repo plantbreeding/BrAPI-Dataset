@@ -9,21 +9,27 @@
 SELECT json_build_object(
   'studyDbId', s.studyDbId,
   'name', s.name,
-  'trialDbId', t.trialDbId,
-  'trialName', t.name,
   'studyType', s.studyType,
-  'seasons', array(
-    SELECT ss.seasonDbId
-    FROM study_season ss
-    WHERE ss.studyDbId = s.studyDbId
-  ),
-  'locationDbId', l.locationDbId,
-  'locationName', l.name,
-  'programDbId', p.programDbId,
-  'programName', p.name,
   'startDate', s.startDate,
   'endDate' , s.endDate,
   'active', s.active,
+
+  'trialDbId', t.trialDbId,
+  'trialName', t.name,
+
+  'seasons', array(
+    SELECT se.season
+    FROM study_season ss
+    JOIN season se
+      ON se.seasonDbId = ss.seasonDbId
+     AND ss.studyDbId = s.studyDbId
+  ),
+
+  'locationDbId', l.locationDbId,
+  'locationName', l.name,
+  
+  'programDbId', p.programDbId,
+  'programName', p.name,
 
   -- Aggregate study_additional_info for the current study into a single json object
   'additionalInfo', (
@@ -32,8 +38,8 @@ SELECT json_build_object(
         SELECT
           sai.key AS key, -- info key
           CASE WHEN count(sai.value)=1
-            THEN to_json(string_agg(sai.value, '')) -- info as simple text
-            ELSE json_agg(sai.value) -- info value as array of text
+            THEN to_json(string_agg(sai.value, '')) -- value as simple text
+            ELSE json_agg(sai.value) -- value as array of text
           END AS value
         FROM study_additional_info sai
         WHERE sai.studyDbId = s.studyDbId

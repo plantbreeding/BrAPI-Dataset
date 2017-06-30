@@ -1,0 +1,4 @@
+cropDbId,studyDbId,name,type,url
+1,1001,image-archive12.zip,Image archive,http://data.inra.fr/archive/multi-spect-flowering.zip
+1,1001,image-archive13.zip,Image archive,http://data.inra.fr/archive/biomass-img.zip
+1,1002,trial-layout.pdf,Trial layout documentation,http://data.inra.fr/archive/trial-layout.pdf
