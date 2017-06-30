@@ -27,7 +27,7 @@ SELECT json_build_object(
 
   'locationDbId', l.locationDbId,
   'locationName', l.name,
-  
+
   'programDbId', p.programDbId,
   'programName', p.name,
 
@@ -37,7 +37,7 @@ SELECT json_build_object(
     FROM (
         SELECT
           sai.key AS key, -- info key
-          CASE WHEN count(sai.value)=1
+          CASE WHEN count(sai.value) = 1
             THEN to_json(string_agg(sai.value, '')) -- value as simple text
             ELSE json_agg(sai.value) -- value as array of text
           END AS value

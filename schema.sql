@@ -19,10 +19,12 @@ DROP TABLE IF EXISTS study_data_link;
 DROP TABLE IF EXISTS study_contact;
 DROP TABLE IF EXISTS study;
 DROP TABLE IF EXISTS study_type;
-DROP TABLE IF EXISTS contact;
 DROP TABLE IF EXISTS location_additional_info;
 DROP TABLE IF EXISTS location;
+DROP TABLE IF EXISTS trial_additional_info;
+DROP TABLE IF EXISTS trial_contact;
 DROP TABLE IF EXISTS trial;
+DROP TABLE IF EXISTS contact;
 DROP TABLE IF EXISTS program;
 DROP TABLE IF EXISTS season;
 
@@ -176,7 +178,22 @@ CREATE TABLE trial (
   name text NOT NULL,
   startDate text, -- TODO: use a date format
   endDate text, -- TODO: use a date format
-  active boolean
+  active boolean,
+  datasetAuthorshipLicence text,
+  datasetAuthorshipDatasetPUI text
+);
+
+CREATE TABLE trial_additional_info (
+  cropDbId text REFERENCES crop(cropDbId),
+  trialDbId text REFERENCES trial(trialDbId),
+  key text NOT NULL,
+  value text NOT NULL
+);
+
+CREATE TABLE trial_contact (
+  cropDbId text REFERENCES crop(cropDbId),
+  trialDbId text REFERENCES trial(trialDbId),
+  contactDbId text REFERENCES contact(contactDbId)
 );
 
 CREATE TABLE study_type (

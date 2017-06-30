@@ -1,7 +1,7 @@
 -- JSON output for BrAPI calls:
 
--- - /brapi/v1/trials
---   https://github.com/plantbreeding/API/blob/master/Specification/Trials/ListTrialSummaries.md
+-- - /brapi/v1/trials/{id}
+--   https://github.com/plantbreeding/API/blob/master/Specification/Trials/GetTrialById.md
 
 SELECT json_build_object(
   'trialDbId', t.trialDbId,
@@ -12,6 +12,26 @@ SELECT json_build_object(
 
   'programDbId', p.programDbId,
   'programName', p.name,
+
+  'datasetAuthorship', json_build_object(
+    'licence', t.datasetAuthorshipLicence,
+    'datasetPUI', t.datasetAuthorshipDatasetPUI
+  ),
+
+  'contacts', array(
+    SELECT json_build_object(
+      'contactDbId', c.contactDbId,
+      'name', c.name,
+      'instituteName', c.instituteName,
+      'email', c.email,
+      'type', c.type,
+      'orcid', c.orcid
+    )
+    FROM trial_contact tc
+    JOIN contact c
+      ON c.contactDbId = tc.contactDbId
+     AND tc.trialDbId = t.trialDbId
+  ),
 
   'studies', array(
     SELECT json_build_object(
