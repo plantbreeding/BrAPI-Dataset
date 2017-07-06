@@ -1,3 +1,5 @@
+![Import/Export dataset](https://docs.google.com/drawings/d/1RxgxfSdr7Kz753tay9Zp9lNletyGQ3TiswDA8x9Q9Vs/pub?w=863&amp;h=137)
+
 This repository contains a SQL schema (`schema.sql` file) and CSV Dataset
 (`data/csv` folder) representing the concepts of the Breeding API.
 
