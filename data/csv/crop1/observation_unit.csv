@@ -1,0 +1,12 @@
+cropDbId,studyDbId,germplasmDbId,observationUnitDbId,name,observationLevel,observationLevels,entryNumber,entryType,plotNumber,blockNumber,plantNumber,x,y,replicate
+1,1001,1,1,Plot 1,plot,block:1;plot:1,1,test,1,1,,1,1,0
+1,1001,1,2,Plant 1,plant,block:1;plot:1;plant:1,2,test,1,1,1,1,1,0
+1,1001,2,3,Plot 2,plot,block:1;plot:2,3,test,2,1,,1,2,0
+1,1001,2,4,Plant 2,plant,block:1;plot:2;plant:2,4,test,2,1,2,1,2,0
+1,1002,1,5,Plot 3,plot,block:1;plot:3 ,5,test,3,1,,1,1,0
+1,1002,1,6,Plant 3,plant,block:1;plot:3;plant:3,6,test,3,1,3,1,1,0
+1,1002,3,7,Plot 4,plot,block:1;plot:4,7,test,4,1,,1,2,0
+1,1002,3,8,Plant 4,plant,block:1;plot:4;plant:4,8,test,4,1,4,1,2,0
+1,1003,4,9,Plot 5,plot,block:101;plot:5,1,check,5,101,,1,1,1
+1,1003,4,10,Plant 5,plant,block:101;plot:5;plant:5,1,test,5,101,5,1,1,1
+1,1003,2,11,Plot 6,plot,block:101;plot:6,1,test,6,101,,1,1,1

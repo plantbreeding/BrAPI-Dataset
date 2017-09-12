@@ -1,0 +1,6 @@
+cropDbId,ontologyDbId,observationVariableDbId,observationVariableName,traitDbId,methodDbId,scaleDbId
+1,MO_123,MO_123:100002,Plant height,,,
+1,MO_123,MO_123:100006,Carotenoid,,,
+1,MO_123,MO_123:100003,Root weight,,,
+1,MO_123,MO_123:100004,Root color,,,
+1,MO_123,MO_123:100005,Virus susceptibility,,,

@@ -1,0 +1,9 @@
+cropDbId,observationUnitDbId,factor,modality
+1,1,water regimen,deficit
+1,2,water regimen,deficit
+1,5,water regimen,deficit
+1,6,water regimen,deficit
+1,3,water regimen,normal
+1,4,water regimen,normal
+1,7,water regimen,normal
+1,8,water regimen,normal

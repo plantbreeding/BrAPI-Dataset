@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS method;
 DROP TABLE IF EXISTS scale;
 DROP TABLE IF EXISTS trait;
 DROP TABLE IF EXISTS ontology;
-DROP TABLE IF EXISTS observation_unit_treatment;
+DROP TABLE IF EXISTS treatment;
 DROP TABLE IF EXISTS observation_unit_xref;
 DROP TABLE IF EXISTS observation_unit;
 DROP TABLE IF EXISTS sample;
@@ -258,8 +258,8 @@ CREATE TABLE observation_unit (
   germplasmDbId text NOT NULL REFERENCES germplasm(germplasmDbId),
   observationUnitDbId text NOT NULL PRIMARY KEY,
   name text NOT NULL,
-  observationUnitLevel text,
-  observationUnitLevels text,
+  observationLevel text,
+  observationLevels text,
   entryNumber text,
   entryType text,
   plotNumber text,
@@ -270,7 +270,7 @@ CREATE TABLE observation_unit (
   replicate text
 );
 
-CREATE TABLE observation_unit_treatment (
+CREATE TABLE treatment (
   cropDbId text REFERENCES crop(cropDbId),
   observationUnitDbId text NOT NULL REFERENCES observation_unit(observationUnitDbId),
   factor text NOT NULL,
@@ -313,6 +313,7 @@ CREATE TABLE observation_variable (
   cropDbId text REFERENCES crop(cropDbId),
   ontologyDbId text NOT NULL REFERENCES ontology(ontologyDbId),
   observationVariableDbId text NOT NULL PRIMARY KEY,
+  observationVariableName text,
   traitDbId text REFERENCES trait(traitDbId),
   methodDbId text REFERENCES method(methodDbId),
   scaleDbId text REFERENCES scale(scaleDbId)
@@ -323,8 +324,8 @@ CREATE TABLE observation (
   cropDbId text REFERENCES crop(cropDbId),
   observationUnitDbId text REFERENCES observation_unit(observationUnitDbId),
   observationVariableDbId text REFERENCES observation_variable(observationVariableDbId),
-  observationTimeStamp text, -- TODO: use a date format
   observationDbId text NOT NULL PRIMARY KEY,
+  observationTimeStamp text, -- TODO: use a date format
   seasonDbId text REFERENCES season(seasonDbId),
   collector text,
   value text
